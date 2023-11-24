@@ -13,8 +13,14 @@ public interface OrderDAO extends JpaRepository<Order, Long> {
 
     // You can add custom queries or methods here if needed
 
+    Order findById(int theId);
+
+
+
     // Example of custom method for finding all orders with pagination
     public List<Order> findAll();
+
+    void deleteById(int theId);
 
     Page<Order> findAllWithPagination(PageRequest pageRequest);
 }

@@ -22,10 +22,22 @@ public class OrderDAOImpl implements OrderDAO {
         entityManager = theEntityManager;
     }
 
+
+    @Override
+    public Order findById(int theId){
+        Order theOrder=entityManager.find(Order.class,theId);
+        return theOrder;
+    }
+
+
+
     @Override
     public <S extends Order> S save(S entity) {
-        return null;
+        S dbOrder=entityManager.merge(entity);
+        return dbOrder;
     }
+
+
 
     @Override
     public <S extends Order> List<S> saveAll(Iterable<S> entities) {
@@ -34,6 +46,7 @@ public class OrderDAOImpl implements OrderDAO {
 
     @Override
     public Optional<Order> findById(Long aLong) {
+
         return Optional.empty();
     }
 
@@ -58,8 +71,15 @@ public class OrderDAOImpl implements OrderDAO {
     }
 
     @Override
-    public void deleteById(Long aLong) {
+    public void deleteById(Long theId) {
+            Order theOrder=entityManager.find(Order.class,theId);
+            entityManager.remove(theOrder);
+    }
 
+    @Override
+    public void deleteById(int  theId) {
+        Order theOrder=entityManager.find(Order.class,theId);
+        entityManager.remove(theOrder);
     }
 
     @Override
