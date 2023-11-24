@@ -1,13 +1,13 @@
 package com.Zyfi.ProductMicroservice;
-public class ApiResponse<T> {
+public class ApiResponse{
     private int flag;
-    private T data;
+    Object data;
 
     // Constructors, getters, and setters
 
-    public ApiResponse(int flag, T data) {
-        this.flag = flag;
-        this.data = data;
+
+
+    public ApiResponse() {
     }
 
     public int getFlag() {
@@ -18,11 +18,11 @@ public class ApiResponse<T> {
         this.flag = flag;
     }
 
-    public T getData() {
+    public Object getData() {
         return data;
     }
 
-    public void setData(T data) {
+    public void setData(Object data) {
         this.data = data;
     }
 }
