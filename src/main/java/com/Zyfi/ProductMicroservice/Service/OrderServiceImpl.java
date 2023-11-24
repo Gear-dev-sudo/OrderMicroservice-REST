@@ -58,7 +58,7 @@ public class OrderServiceImpl implements OrderService{
             throw  new RuntimeException("Order id not found");
         }
 
-        else if(theOrder.getAuthorised()==true) {
+        else if(theOrder.getAuthorised()) {
             throw new RuntimeException("Order Already Auth-ed");
         }
         else {
@@ -69,4 +69,23 @@ public class OrderServiceImpl implements OrderService{
         }
     }
 
+    @Override
+    @Transactional
+    public boolean finishById(int theId, int finishPersonId) {
+        Order theOrder=orderDAO.findById(theId);
+        if(theOrder == null)
+        {
+            throw  new RuntimeException("Order id not found");
+        }
+
+        else if(theOrder.getFinished()) {
+            throw new RuntimeException("Order Already Finish-ed");
+        }
+        else {
+            theOrder.setFinished(true);
+            theOrder.setFinishedTime(java.sql.Timestamp.valueOf(LocalDateTime.now()));
+            theOrder.setFinishedPersonId((long) finishPersonId);
+            return true;
+        }
+    }
 }

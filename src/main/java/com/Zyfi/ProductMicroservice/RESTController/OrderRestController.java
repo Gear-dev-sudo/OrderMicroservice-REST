@@ -73,8 +73,15 @@ public class OrderRestController {
 
     @PutMapping("/orders/authorize/{orderId}/{authPersonId}")
     public boolean authorizeOrder(@PathVariable int orderId,@PathVariable int authPersonId){
-        Boolean result=false;
-        result=orderService.authorizeById(orderId,authPersonId);
+
+        Boolean result=orderService.authorizeById(orderId,authPersonId);
+        return result;
+    }
+
+    @PutMapping("/orders/finish/{orderId}/{finishedPersonId}")
+    public boolean finishOrder(@PathVariable int orderId,@PathVariable int finishedPersonId){
+
+        Boolean result=orderService.finishById(orderId,finishedPersonId);
         return result;
     }
     //add mapping for Deletion

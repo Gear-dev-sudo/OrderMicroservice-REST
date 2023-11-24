@@ -24,4 +24,7 @@ public interface OrderService {
 
     @Transactional
     boolean authorizeById(int theId,int authorisedPersonId);
+
+    @Transactional
+    boolean finishById(int orderId, int finishedPersonId);
 }
