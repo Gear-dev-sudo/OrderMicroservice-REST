@@ -1,17 +1,14 @@
 package com.Zyfi.ProductMicroservice.RESTController;
 
-import com.Zyfi.ProductMicroservice.DAO.OrderDAO;
 import com.Zyfi.ProductMicroservice.Service.OrderService;
 import com.Zyfi.ProductMicroservice.entity.Order;
 
-import lombok.experimental.PackagePrivate;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.Timestamp;
+import java.sql.PreparedStatement;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -24,6 +21,8 @@ public class OrderRestController {
     {
         orderService=theOrderService;
     }
+
+
 
     //expose '/orders'
     @GetMapping("/orders")
@@ -72,6 +71,12 @@ public class OrderRestController {
         return dbOrder;
     }
 
+    @PutMapping("/orders/authorize/{orderId}/{authPersonId}")
+    public boolean authorizeOrder(@PathVariable int orderId,@PathVariable int authPersonId){
+        Boolean result=false;
+        result=orderService.authorizeById(orderId,authPersonId);
+        return result;
+    }
     //add mapping for Deletion
     @DeleteMapping("/orders/{orderId}")
     public String deleteOrder(@PathVariable int orderId) {

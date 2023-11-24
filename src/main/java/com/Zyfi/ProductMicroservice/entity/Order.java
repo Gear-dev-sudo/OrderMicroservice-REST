@@ -36,7 +36,7 @@ public class Order {
     @Column(name = "is_authorised", nullable = false)
     private Boolean isAuthorised = false;
 
-    @Column(name = "authorised_person_id", nullable = false)
+    @Column(name = "authorised_person_id", nullable = true)
     private Long authorisedPersonId;
 
     @Column(name = "authorised_time")

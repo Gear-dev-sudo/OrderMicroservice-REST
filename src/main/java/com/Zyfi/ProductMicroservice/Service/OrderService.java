@@ -21,4 +21,7 @@ public interface OrderService {
 
     @Transactional
     void deleteById(int theId);
+
+    @Transactional
+    boolean authorizeById(int theId,int authorisedPersonId);
 }
