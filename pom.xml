@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.Zyfi</groupId>
-	<artifactId>ProductMicroservice</artifactId>
+	<artifactId>OrderMicroservice</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>ProductMicroservice</name>
 	<description>ProductMicroservice in Spring Boot</description>

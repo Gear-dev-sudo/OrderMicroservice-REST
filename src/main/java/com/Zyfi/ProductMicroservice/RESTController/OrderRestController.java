@@ -1,5 +1,6 @@
 package com.Zyfi.ProductMicroservice.RESTController;
 
+import com.Zyfi.ProductMicroservice.ApiResponse;
 import com.Zyfi.ProductMicroservice.Service.OrderService;
 import com.Zyfi.ProductMicroservice.entity.Order;
 
@@ -26,9 +27,13 @@ public class OrderRestController {
 
     //expose '/orders'
     @GetMapping("/orders")
-    public List<Order> findAll(){
+    public ApiResponse<List<Order>> findAll(){
+        ApiResponse response=new ApiResponse();
+
         return orderService.findAll();
     }
+
+
 
     @GetMapping("/ordersPG")
     public Page<Order> findAllWithPg(@RequestParam(defaultValue = "0") int page,
