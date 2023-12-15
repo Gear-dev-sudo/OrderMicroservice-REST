@@ -33,7 +33,7 @@ public class Order {
     @Temporal(TemporalType.TIMESTAMP)
     private Date creationTime;
 
-    @Column(name = "is_authorised", nullable = false)
+    @Column(name = "is_authorised", nullable = true)
     private Boolean isAuthorised = false;
 
     @Column(name = "authorised_person_id", nullable = true)
@@ -43,10 +43,10 @@ public class Order {
     @Temporal(TemporalType.TIMESTAMP)
     private Date authorisedTime;
 
-    @Column(name = "is_finished", nullable = false)
+    @Column(name = "is_finished", nullable = true)
     private Boolean isFinished = false;
 
-    @Column(name = "finished_person_id", nullable = false)
+    @Column(name = "finished_person_id", nullable = true)
     private Long finishedPersonId;
 
     @Column(name = "finished_time")
